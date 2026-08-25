@@ -1,0 +1,1 @@
+Epoch 1 - Train Loss: 8.0595 (vdw: 1.3509, elec: 1.2775, solv: 0.9119, hbond: 1.2729, affinity: 2.5574, rank: 0.6905) | Validation Loss: 5.7561 (vdw: 1.5898, elec: 1.4055, solv: 0.5070, hbond: 1.2124, affinity: 0.3553, rank: 0.6875) | LR: 1.0e-03

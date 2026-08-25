@@ -1,0 +1,3 @@
+[Error] Failed on A00KX.1_1wej.pdb
+[Error] Failed on A00PE.1_1atn.pdb
+[Error] Failed on A00Q5.1_2btf.pdb

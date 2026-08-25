@@ -1,0 +1,128 @@
+================================================================================
+KASTRITIS / PRODIGY PROTEIN-PROTEIN AFFINITY BENCHMARK PROCESSING REPORT
+================================================================================
+
+1. DATASET SOURCE & SPECIFICATIONS
+----------------------------------------
+Source URL (CSV): https://wenmr.science.uu.nl/prodigy/static/PRODIGY_dataset.csv
+Source URL (PDBs): https://wenmr.science.uu.nl/prodigy/static/PRODIGYdataset.tgz
+Benchmark Reference: Vangone & Bonvin, eLife 2015, 4:e07454; Kastritis et al., Protein Sci 2011
+Temporal Dimension: T = 1 (Static crystal structures)
+Affinity Formulation: pKd = -DeltaG / (RT * ln(10)) = -DeltaG / 1.3633 (kcal/mol at 298.15 K)
+Interface Definition: Interface residues with cross-partner min sidechain dist <= 25.0 A
+Core Interface Definition: Interface residues with cross-partner min sidechain dist <= 15.0 A
+Coordinates: [1, N, 4, 3] float16 (CA=0, C=1, N=2, Sidechain Centroid=3)
+
+2. SUMMARY METRICS
+----------------------------------------
+Total complexes in benchmark index: 81
+Successfully processed complexes:   81
+Failed / skipped complexes:         0
+Total warnings logged:              5
+
+Residue Count (N) Statistics:
+  Min: 116, Max: 510, Mean: 285.72, Median: 269.0
+Core Interface Residues (dist <= 15A) Statistics:
+  Min: 74, Max: 255, Mean: 148.38, Median: 141.0
+Experimental Affinity (pKd) Statistics:
+  Min: 3.154, Max: 13.643, Mean: 7.410, Std: 2.041
+Binding Free Energy (DeltaG kcal/mol) Statistics:
+  Min: -18.60, Max: -4.30, Mean: -10.10, Std: 2.78
+
+3. PROCESSED COMPLEXES DETAILS
+--------------------------------------------------------------------------------
+Complex    PDB      Class    N      Core_N   Rec_N    Lig_N    DeltaG     pKd     
+--------------------------------------------------------------------------------
+1a2k       1a2k     OG       323    146      142      181      -9.30      6.822   
+1acb       1acb     EI       274    152      212      62       -13.10     9.609   
+1ak4       1ak4     OX       226    118      157      69       -6.40      4.694   
+1akj       1akj     OX       507    255      300      207      -5.30      3.888   
+1atn       1atn     OX       334    148      128      206      -12.10     8.876   
+1avz       1avz     NC       142    85       85       57       -6.50      4.768   
+1b6c       1b6c     OX       279    161      106      173      -8.90      6.528   
+1bj1       1bj1     AB       257    133      163      94       -11.60     8.509   
+1buh       1buh     EI       206    104      136      70       -9.70      7.115   
+1bvk       1bvk     A        258    129      165      93       -10.50     7.702   
+1bvn       1bvn     EI       390    205      319      71       -15.10     11.076  
+1cbw       1cbw     NC       268    145      214      54       -10.70     7.849   
+1de4       1de4     OX       510    209      186      324      -9.80      7.188   
+1dqj       1dqj     A        297    161      169      128      -11.70     8.582   
+1e4k       1e4k     OR       269    143      150      119      -7.90      5.795   
+1e6e       1e6e     ES       438    197      332      106      -8.30      6.088   
+1e6j       1e6j     A        236    120      163      73       -10.30     7.555   
+1e96       1e96     OG       297    128      147      150      -7.40      5.428   
+1eer       1eer     OR       439    254      164      275      -15.60     11.443  
+1efn       1efn     OX       145    91       88       57       -10.10     7.408   
+1emv       1emv     EI       202    115      81       121      -18.60     13.643  
+1ewy       1ewy     ES       351    176      255      96       -7.40      5.428   
+1ezu       1ezu     EI       417    254      216      201      -13.80     10.122  
+1fc2       1fc2     OX       184    103      43       141      -10.40     7.629   
+1ffw       1ffw     OX       180    99       112      68       -8.10      5.941   
+1fsk       1fsk     AB       322    162      176      146      -13.10     9.609   
+1gcq       1gcq     OX       126    90       57       69       -6.50      4.768   
+1gla       1gla     ER       300    133      154      146      -6.80      4.988   
+1gxd       1gxd     EI       266    164      163      103      -11.70     8.582   
+1he8       1he8     OG       334    150      141      193      -7.40      5.428   
+1i2m       1i2m     OG       445    253      138      307      -15.80     11.590  
+1i4d       1i4d     OG       380    171      140      240      -7.50      5.501   
+1j2j       1j2j     OG       159    93       118      41       -8.10      5.941   
+1jps       1jps     A        312    164      174      138      -13.60     9.976   
+1jtg       1jtg     EI       395    231      165      230      -12.80     9.389   
+1jwh       1jwh     ER       296    143      168      128      -11.10     8.142   
+1k5d       1k5d     OG       460    228      180      280      -12.80     9.389   
+1kac       1kac     OR       256    137      146      110      -10.70     7.849   
+1kkl       1kkl     ES       306    161      220      86       -10.00     7.335   
+1ktz       1ktz     OR       141    79       44       97       -8.90      6.528   
+1kxq       1kxq     AB       373    191      109      264      -11.50     8.435   
+1lfd       1lfd     OG       216    108      132      84       -7.80      5.721   
+1m10       1m10     ER       412    223      179      233      -11.20     8.215   
+1mlc       1mlc     NC       260    134      164      96       -9.60      7.042   
+1mq8       1mq8     OX       225    119      107      118      -7.50      5.501   
+1p2c       1p2c     A        266    137      168      98       -13.60     9.976   
+1ppe       1ppe     EI       236    141      207      29       -15.60     11.443  
+1pvh       1pvh     OR       264    131      125      139      -9.50      6.968   
+1qa9       1qa9     OX       180    102      89       91       -7.20      5.281   
+1r0r       1r0r     EI       295    163      244      51       -14.20     10.416  
+1s1q       1s1q     OX       193    109      122      71       -4.30      3.154   
+1us7       1us7     ER       285    133      162      123      -8.10      5.941   
+1vfb       1vfb     A        260    137      165      95       -11.50     8.435   
+1wej       1wej     A        261    133      160      101      -12.50     9.169   
+1xqs       1xqs     OX       357    210      239      118      -7.10      5.208   
+1xu1       1xu1     OR       270    131      231      39       -11.20     8.215   
+1z0k       1z0k     OG       206    142      145      61       -7.00      5.135   
+1zhi       1zhi     OX       226    110      137      89       -9.10      6.675   
+2a9k       2a9k     ES       298    148      153      145      -10.20     7.482   
+2abz       2abz     EI       282    139      225      57       -11.70     8.582   
+2ajf       2ajf     OR       334    174      205      129      -10.60     7.775   
+2aq3       2aq3     NC       256    120      105      151      -6.70      4.915   
+2c0l       2c0l     OX       370    201      256      114      -9.80      7.188   
+2fju       2fju     OG       269    124      138      131      -7.20      5.281   
+2gox       2gox     OX       267    144      202      65       -12.10     8.876   
+2hqs       2hqs     OX       368    209      263      105      -10.20     7.482   
+2hrk       2hrk     OX       247    133      130      117      -11.00     8.069   
+2i25       2i25     A        208    123      82       126      -12.30     9.022   
+2mta       2mta     ES       355    156      258      97       -7.40      5.428   
+2nyz       2nyz     OR       335    173      274      61       -12.70     9.316   
+2oob       2oob     ES       116    74       44       72       -5.70      4.181   
+2pcb       2pcb     NC       267    117      170      97       -6.80      4.988   
+2pcc       2pcc     ES       278    130      173      105      -7.90      5.795   
+2tgp       2tgp     NC       263    144      208      55       -7.50      5.501   
+2vir       2vir     A        312    149      156      156      -12.30     9.022   
+2vis       2vis     NC       310    150      155      155      -7.40      5.428   
+2wpt       2wpt     NC       191    116      81       110      -10.70     7.849   
+3bzd       3bzd     OX       253    128      102      151      -9.60      7.042   
+3cph       3cph     OG       369    165      228      141      -8.80      6.455   
+3sgb       3sgb     EI       220    134      170      50       -14.50     10.636  
+4cpa       4cpa     EI       263    124      227      36       -11.30     8.289   
+
+4. WARNINGS & DROPPED RESIDUES LOG
+----------------------------------------
+[⚠] [Warning] 1fc2: Dropping ALA 167 missing backbone.
+[⚠] [Warning] 1fc2: Dropping SER 444 missing backbone.
+[⚠] [Warning] 1us7: Dropping VAL 208 missing backbone.
+[⚠] [Warning] 1us7: Dropping ALA 348 missing backbone.
+[⚠] [Warning] 2wpt: Dropping VAL 79 missing backbone.
+
+5. FAILURES LOG
+----------------------------------------
+Zero processing failures encountered. All benchmark complexes succeeded.

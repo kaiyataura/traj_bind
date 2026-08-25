@@ -1,0 +1,2 @@
+Epoch 1 - Train Loss: 0.3324 (vdw: 0.3324, elec: 0.2790, solv: 0.4545, hbond: 0.7130, inactive: 0.0001) | Validation Loss: 0.3378 (vdw: 0.3378, elec: 0.2823, solv: 0.4531, hbond: 0.7347, inactive: 0.0000) | LR: 1.0e-03
+Epoch 2 - Train Loss: 0.3259 (vdw: 0.3259, elec: 0.2792, solv: 0.4539, hbond: 0.7522, inactive: 0.0000) | Validation Loss: 0.3330 (vdw: 0.3330, elec: 0.2823, solv: 0.4531, hbond: 0.7347, inactive: 0.0000) | LR: 1.0e-03

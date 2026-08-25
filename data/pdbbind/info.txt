@@ -1,0 +1,159 @@
+===========================================================================
+PDBBIND PROTEIN-PROTEIN ZERO-LEAKAGE HOMOLOGY FILTER AUDIT REPORT
+===========================================================================
+
+Timestamp                  : 2026-08-20 02:24:04 UTC
+Pipeline Step              : Milestone M2 (Sequence Similarity Clustering & Leakage Filter)
+Total Processing Time      : 25.21 seconds
+
+--- 1. FILTERING METHODOLOGY & PARAMETERS ---
+Clustering Engine          : Biopython Bio.Align.PairwiseAligner (C-accelerated Needleman-Wunsch)
+Substitution Matrix        : BLOSUM62
+Alignment Mode             : Global
+Scoring Parameters         : Match/Mismatch from BLOSUM62, Gap Open = -11.0, Gap Extend = -1.0
+Normalization Metric       : SeqIdentity = matches / min(Length_PDBbind, Length_Benchmark)
+Identity Cutoff Threshold  : 35.0%
+Exclusion Strategy         : Any-chain cross-matching (purges complex if ANY chain matches)
+
+--- 2. DATASET SUMMARY STATISTICS ---
+Benchmark Reference Source : Kastritis Affinity Benchmark / PRODIGY cleaned dataset
+Total Benchmark Complexes  : 81
+Total Benchmark Chains     : 162
+Raw PDBbind PP Entries     : 2798
+Total Chain Alignments     : 453,276
+
+--- 3. HOMOLOGY FILTERING OUTCOMES ---
+Homologous Complexes Purged: 1,426 (50.96%)
+Clean Complexes Retained   : 1,372 (49.04%)
+Total Excluded Chain Pairs : 25,838
+Max Similarity (Retained)  : 34.94%
+Min Similarity (Excluded)  : 35.10%
+
+--- 4. SEQUENCE SIMILARITY DISTRIBUTION ---
+Max Sequence Identity to Benchmark:
+     0.00 - 0.10 :  1037 ( 37.1%) | ##################
+     0.10 - 0.20 :    33 (  1.2%) | 
+     0.20 - 0.30 :   198 (  7.1%) | ###
+     0.30 - 0.35 :   104 (  3.7%) | #
+     0.35 - 0.50 :   146 (  5.2%) | ##
+     0.50 - 0.70 :   181 (  6.5%) | ###
+     0.70 - 0.90 :   434 ( 15.5%) | #######
+     0.90 - 1.00 :   665 ( 23.8%) | ###########
+
+--- 5. ZERO DATA LEAKAGE CERTIFICATION ---
+STATUS                     : [PASSED] ABSOLUTE ZERO DATA LEAKAGE CERTIFIED
+Verification Check         : max(p,b) SeqID(p, b) = 34.94% < 35.0%
+Violations Detected        : 0 / 1372
+
+--- 6. TOP 20 EXCLUDED HOMOLOGOUS PAIRS (SAMPLE AUDIT) ---
+PDBbind ID  Chain   Bench ID    Chain   Identity    Aln Len   Matches 
+----------------------------------------------------------------------
+6s53        F       1s1q        B        100.00%    76        71      
+6s53        F       2oob        B        100.00%    76        72      
+6s53        D       1s1q        B        100.00%    76        71      
+6s53        D       2oob        B        100.00%    76        72      
+6s53        L       1s1q        B        100.00%    76        71      
+6s53        L       2oob        B        100.00%    76        72      
+6s53        J       1s1q        B        100.00%    76        71      
+6s53        J       2oob        B        100.00%    76        72      
+6nha        B       1de4        A        100.00%    371       99      
+6n6r        A       1s1q        B        100.00%    148       71      
+6n6r        A       2oob        B        100.00%    148       72      
+6n6r        C       1s1q        B        100.00%    150       71      
+6n6r        C       2oob        B        100.00%    150       72      
+6jb8        B       2i25        B        100.00%    129       129     
+6jb8        B       1mlc        B        100.00%    129       129     
+6jb8        B       1vfb        B        100.00%    129       129     
+6jb8        B       1p2c        B        100.00%    129       129     
+6jb8        B       1bvk        B        100.00%    129       129     
+6jb8        B       1dqj        B        100.00%    129       129     
+6jb2        B       2i25        B        100.00%    129       129     
+
+===========================================================================
+
+--- 7. STATIC STRUCTURE PROCESSING & HDF5 GENERATION REPORT ---
+Timestamp                  : 2026-08-20 02:24:43 UTC
+Pipeline Step              : Milestone M4 (PDBbind Static Tensor Processing & HDF5 Generation)
+Total Retained Index Inputs: 1372
+Successfully Processed     : 1370 (99.85%)
+Skipped / Incompatible     : 2 (0.15%)
+Total Warnings Logged      : 98
+
+--- 8. DATASET REPRESENTATION SPECIFICATIONS ---
+Temporal Dimension         : T = 1 (Static crystal structure representation)
+Interface Retention Cutoff : Residues with min cross-partner sidechain dist <= 25.0 A
+Core Interface Definition  : Interface residues with min cross-partner sidechain dist <= 15.0 A
+Coordinate Tensor Shape    : (1, N, 4, 3) float16, gzip level 4 [CA=0, C=1, N=2, Sidechain Centroid=3]
+Residue Types Dataset      : (N,) int8 [IDs 1..29 conforming to dynarepo schema]
+Chemical Properties Dataset: (N, 5) float32 [Charge, Hydropathy, Donors, Acceptors, Volume/100]
+Chain Indicators Dataset   : (N,) int8 [0 = Receptor, 1 = Ligand]
+Core Mask Dataset          : (N,) bool [distance <= 15 A]
+
+--- 9. INTERFACE RESIDUE AND AFFINITY DISTRIBUTIONS ---
+Interface Residue Count (N, <= 25A):
+  Min: 42, Max: 1070, Mean: 271.90, Median: 244.0, Std: 128.49
+Core Interface Residue Count (dist <= 15A):
+  Min: 34, Max: 551, Mean: 159.23, Median: 147.0, Std: 66.10
+Experimental Binding Affinity (pKd):
+  Min: 2.430, Max: 15.700, Mean: 7.051, Median: 6.935, Std: 1.677
+
+--- 10. WARNINGS & DROPPED RESIDUES AUDIT LOG ---
+[⚠] [Warning] 1b27: Dropping PHE 57 missing backbone.
+[⚠] [Warning] 1hqr: Dropping LYS 503 missing backbone.
+[⚠] [Warning] 1gpw: Dropping ARG 201 missing backbone.
+[⚠] [Warning] 1vyt: Dropping HIS 362 missing backbone.
+[⚠] [Warning] 1vyt: Dropping PRO 363 missing backbone.
+[⚠] [Warning] 1vyt: Dropping ASP 446 missing backbone.
+[⚠] [Warning] 1w1w: Dropping GLU 561 missing backbone.
+[⚠] [Warning] 1w1w: Dropping GLU 561 missing backbone.
+[⚠] [Warning] 1w1w: Dropping GLU 561 missing backbone.
+[⚠] [Warning] 1w1w: Dropping GLU 561 missing backbone.
+[⚠] [Warning] 1usv: Dropping ILE 154 missing backbone.
+[⚠] [Warning] 1v18: Dropping ASP 665 missing backbone.
+[⚠] [Warning] 1x75: Dropping ASN 419 missing backbone.
+[⚠] [Warning] 2c5d: Dropping ALA 677 missing backbone.
+[⚠] [Warning] 2c5d: Dropping ALA 677 missing backbone.
+[⚠] [Warning] 2c5d: Dropping PRO 218 missing backbone.
+[⚠] [Warning] 2c5d: Dropping PRO 218 missing backbone.
+[⚠] [Warning] 1ogy: Dropping ALA 801 missing backbone.
+[⚠] [Warning] 1ogy: Dropping GLU 128 missing backbone.
+[⚠] [Warning] 1ogy: Dropping ALA 801 missing backbone.
+[⚠] [Warning] 1ogy: Dropping GLU 128 missing backbone.
+[⚠] [Warning] 1ogy: Dropping ALA 801 missing backbone.
+[⚠] [Warning] 1ogy: Dropping GLU 128 missing backbone.
+[⚠] [Warning] 1ogy: Dropping ALA 801 missing backbone.
+[⚠] [Warning] 1ogy: Dropping GLU 128 missing backbone.
+[⚠] [Warning] 1ogy: Dropping ALA 801 missing backbone.
+[⚠] [Warning] 1ogy: Dropping GLU 128 missing backbone.
+[⚠] [Warning] 1ogy: Dropping ALA 801 missing backbone.
+[⚠] [Warning] 1ogy: Dropping GLU 128 missing backbone.
+[⚠] [Warning] 1ogy: Dropping ALA 801 missing backbone.
+[⚠] [Warning] 1ogy: Dropping GLU 128 missing backbone.
+[⚠] [Warning] 1ogy: Dropping ALA 801 missing backbone.
+[⚠] [Warning] 1ogy: Dropping GLU 128 missing backbone.
+[⚠] [Warning] 2omy: Dropping ALA 496 missing backbone.
+[⚠] [Warning] 2omy: Dropping GLN 101 missing backbone.
+[⚠] [Warning] 2omv: Dropping ALA 496 missing backbone.
+[⚠] [Warning] 2omt: Dropping ALA 497 missing backbone.
+[⚠] [Warning] 2omt: Dropping GLN 101 missing backbone.
+[⚠] [Warning] 2omw: Dropping ALA 101 missing backbone.
+[⚠] [Warning] 2omz: Dropping GLY 497 missing backbone.
+[⚠] [Warning] 2omz: Dropping GLN 101 missing backbone.
+[⚠] [Warning] 2vof: Dropping PRO 150 missing backbone.
+[⚠] [Warning] 3crk: Dropping SER 12 missing backbone.
+[⚠] [Warning] 3idc: Dropping GLU 128 missing backbone.
+[⚠] [Warning] 3idb: Dropping GLU 123 missing backbone.
+[⚠] [Warning] 3idb: Dropping TYR 265 missing backbone.
+[⚠] [Warning] 3hpw: Dropping ILE 101 missing backbone.
+[⚠] [Warning] 2wfx: Dropping GLU 667 missing backbone.
+[⚠] [Warning] 2w19: Dropping ASP 462 missing backbone.
+[⚠] [Warning] 2w19: Dropping ASP 462 missing backbone.
+  ... and 48 additional residue drop warnings.
+
+--- 11. SKIPPED / INCOMPATIBLE COMPLEXES AUDIT LOG ---
+[❌] [Skip] 1ffx: Missing binding partner in protein atoms (chains={0}).
+[❌] [Skip] 4r8i: Missing binding partner in protein atoms (chains={0}).
+
+===========================================================================
+END OF PDBBIND PROCESSING REPORT
+===========================================================================
