@@ -14,14 +14,14 @@ class DistanceEmbedding(nn.Module):
         self.r_max = r_max
         centers = torch.linspace(r_min, r_max, dist_dim)
         self.register_buffer('centers', centers)
-        self.gamma: float = -4.0 * math.log(0.5) / ((centers[1].item() - centers[0].item()) ** 2) # midpoint = 0.5
+        self.width: float = (centers[1].item() - centers[0].item()) / (2.0 * math.sqrt(math.log(2.0))) # midpoint = 0.5
 
     def forward(self, coords: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
         # coords: [B, N, 4, 3]
         B, N, _, _ = coords.shape
         flat_coords = coords.view(B, N * 4, 3)
         dists = torch.cdist(flat_coords, flat_coords).view(B, N, 4, N, 4).permute(0,1,3,2,4) # [B, N, N, 4, 4]
-        rbfs = torch.exp(((dists.flatten(-2).unsqueeze(-1) - self.centers) ** 2) * -self.gamma).flatten(-2)
+        rbfs = torch.exp(-((dists.flatten(-2).unsqueeze(-1) - self.centers) / self.width) ** 2).flatten(-2)
         return rbfs, dists[...,3,3]
 
 class AngleEmbedding(nn.Module):
@@ -30,7 +30,7 @@ class AngleEmbedding(nn.Module):
         super().__init__()
         centers = torch.linspace(-1.0, 1.0, angle_dim)
         self.register_buffer('centers', centers)
-        self.gamma: float = -4.0 * math.log(0.5) / ((centers[1].item() - centers[0].item()) ** 2) # midpoint = 0.5
+        self.width: float = (centers[1].item() - centers[0].item()) / (2.0 * math.sqrt(math.log(2.0))) # midpoint = 0.5
 
     def forward(self, coords: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         # coords: [B, N, 4, 3]
@@ -60,7 +60,7 @@ class AngleEmbedding(nn.Module):
             (v4.unsqueeze(2) * v4.unsqueeze(1)).sum(dim=-1), # Plane_i • Plane_j
         ], dim=-1) # [B, N, N, 10]
         
-        rbfs = torch.exp(((angs.unsqueeze(-1) - self.centers) ** 2) * -self.gamma).flatten(-2) # [B, N, N, Sa]
+        rbfs = torch.exp(-((angs.unsqueeze(-1) - self.centers) / self.width) ** 2).flatten(-2) # [B, N, N, Sa]
         return rbfs, dir, frame
 
 
